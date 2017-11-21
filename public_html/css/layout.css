@@ -1,0 +1,136 @@
+    body {
+        margin-top: 0px;
+        text-align: center;
+        background-color: #FFFFF5;
+    }
+
+    h1, h2, h3, h4, h5 {
+        margin: 0px;
+    }
+
+    header {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        color: white;
+        background-color: darkcyan;
+    }
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+    }
+
+    .description {
+        position: relative;
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 7px 10px;
+        min-width: 120px;
+        max-width: 100%;
+        color: #555;
+        font-size: 16px;
+        background: #FFF;
+        border: solid 3px #555;
+        box-sizing: border-box;
+    }
+
+        .description:before {
+            content: "";
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            margin-left: -15px;
+            border: 12px solid transparent;
+            border-top: 12px solid #FFF;
+            z-index: 2;
+        }
+
+        .description:after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            margin-left: -17px;
+            border: 14px solid transparent;
+            border-top: 14px solid #555;
+            z-index: 1;
+        }
+
+    .demo {
+        background-color: #F0F0F0;
+    }
+
+        .demo > div {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .demo label {
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+    .data-table {
+        background-color: #F0F0F0;
+    }
+
+    #data-table {
+        background-color: #FFFFF5;
+    }
+
+
+    .pure-button {
+        background-color: #DDDDDD;
+        color: #7F7F7F;
+    }
+
+    input[type="radio"].radio-button {
+        display: none;
+    }
+
+    input[type="radio"]:checked.radio-button + span {
+        background-color: orange;
+        color: black;
+    }
+
+    .output-layer {
+        /*background-color: greenyellow;*/
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: inline-block;
+        padding: 5px;
+        background-color: #FFE0C0;
+    }
+
+    input[type="radio"]:checked.output-layer + span {
+        background: red;
+    }
+
+    .hidden-layer {
+        text-align: center;
+    }
+
+    .input-layer {
+        /*background-color: lightblue;*/
+        display: inline-block;
+        padding: 5px;
+        background-color: #C0C0FF;
+    }
+
+        .input-layer [type="checkbox"] {
+            display: none;
+        }
+
+            .input-layer [type="checkbox"]:checked + span {
+                background-color: dodgerblue;
+                color: black;
+            }
+            
+            #run {
+                background-color: dodgerblue;
+                color: black;
+            }
+</style>
