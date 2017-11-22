@@ -72,6 +72,18 @@ Softmax.prototype.prob = function (yindex, xdata) {
     return phi_k / z;
 }
 
+Softmax.prototype.maxY = function () {
+    var prob = [];
+
+    for (var k = 0; k < this.ysize; k++) {
+        prob.push(this.prob(k));
+    }
+
+    var y = prob.indexOf(Math.max.apply(null, prob))
+
+    return y;
+};
+
 
 function SoftmaxTrainer(softmax) {
     this.initGradient();
@@ -299,81 +311,81 @@ function n_counter(count, n, array) {
 }
 
 
-var xsize = 10;
-var ysize = xsize;
-var train_data = [];  // 誤りデータ
-var test_data = [];  // 正解データ
-for (var n = 0; n < ysize; n++) {
-    for (var k = 0; k < ysize; k++) {
-        var data = [];
-        while (data.length < xsize) {
-            data.push(0);
-        }
+//var xsize = 10;
+//var ysize = xsize;
+//var train_data = [];  // 誤りデータ
+//var test_data = [];  // 正解データ
+//for (var n = 0; n < ysize; n++) {
+//    for (var k = 0; k < ysize; k++) {
+//        var data = [];
+//        while (data.length < xsize) {
+//            data.push(0);
+//        }
 
-        data[n] = 1;
+//        data[n] = 1;
 
-        if (n === k) {  // 正解データ
-            test_data.push({ "x": data, "y": n });
-        } else {  // 誤りデータ
-            train_data.push({ "x": data, "y": k });
-        }
-    }
-}
+//        if (n === k) {  // 正解データ
+//            test_data.push({ "x": data, "y": n });
+//        } else {  // 誤りデータ
+//            train_data.push({ "x": data, "y": k });
+//        }
+//    }
+//}
 
-var softmax = new Softmax(xsize, ysize);
-var trainer = new SoftmaxTrainer(softmax);
-var softmax_t = new Softmax(xsize, ysize);
-var trainer_t = new SoftmaxTrainer(softmax);
-var alpha = 0.01;
-var iteration = 5;
-var batch_size = xsize;
-
-
-for (var i = 0; i < iteration; i++) {
-    var shuffle = function () { return Math.random() - .5 };
-//    train_data.sort(shuffle);
-//    test_data.sort(shuffle);
-
-    trainer.forgetTrain(softmax, train_data, alpha, batch_size * (batch_size - 1));
-    trainer_t.train(softmax_t, test_data, alpha, batch_size);
-}
-
-console.log("trained by incorrect data")
-//console.log(train_data)
-for (var n = 0; n < test_data.length; n++) {
-    softmax.node["x"] = test_data[n].x;
-    var label = test_data[n].y;
-    var prob = [];
-    for (var k = 0; k < ysize; k++) {
-        prob.push(softmax.prob(k, test_data[n].x))
-    }
-    var inference = prob.indexOf(Math.max.apply(null, prob));
-    console.log("--------------------------------------------------------------------");
-    //console.log({ "input": softmax.node.x });
-    console.log({ "label": label, "inference": inference, "bool": label === inference });
-}
-
-console.log("")
-console.log("--------------------------------------------------------------------");
-console.log("--------------------------------------------------------------------");
-console.log("--------------------------------------------------------------------");
-console.log("")
-
-console.log("trained by correct data")
-//console.log(test_data)
-for (var n = 0; n < test_data.length; n++) {
-    softmax_t.node["x"] = test_data[n].x;
-    label = test_data[n].y;
-    var prob = [];
-    for (var k = 0; k < ysize; k++) {
-        prob.push(softmax_t.prob(k, test_data[n].x))
-    }
-    var inference = prob.indexOf(Math.max.apply(null, prob));
-    console.log("--------------------------------------------------------------------");
-    //console.log({ "input": softmax_t.node.x });
-    console.log({ "label": label, "inference": inference, "bool": label === inference });
-}
+//var softmax = new Softmax(xsize, ysize);
+//var trainer = new SoftmaxTrainer(softmax);
+//var softmax_t = new Softmax(xsize, ysize);
+//var trainer_t = new SoftmaxTrainer(softmax);
+//var alpha = 0.01;
+//var iteration = 5;
+//var batch_size = xsize;
 
 
-console.log(softmax.bias)
-console.log(softmax_t.bias)
+//for (var i = 0; i < iteration; i++) {
+//    var shuffle = function () { return Math.random() - .5 };
+////    train_data.sort(shuffle);
+////    test_data.sort(shuffle);
+
+//    trainer.forgetTrain(softmax, train_data, alpha, batch_size * (batch_size - 1));
+//    trainer_t.train(softmax_t, test_data, alpha, batch_size);
+//}
+
+//console.log("trained by incorrect data")
+////console.log(train_data)
+//for (var n = 0; n < test_data.length; n++) {
+//    softmax.node["x"] = test_data[n].x;
+//    var label = test_data[n].y;
+//    var prob = [];
+//    for (var k = 0; k < ysize; k++) {
+//        prob.push(softmax.prob(k, test_data[n].x))
+//    }
+//    var inference = prob.indexOf(Math.max.apply(null, prob));
+//    console.log("--------------------------------------------------------------------");
+//    //console.log({ "input": softmax.node.x });
+//    console.log({ "label": label, "inference": inference, "bool": label === inference });
+//}
+
+//console.log("")
+//console.log("--------------------------------------------------------------------");
+//console.log("--------------------------------------------------------------------");
+//console.log("--------------------------------------------------------------------");
+//console.log("")
+
+//console.log("trained by correct data")
+////console.log(test_data)
+//for (var n = 0; n < test_data.length; n++) {
+//    softmax_t.node["x"] = test_data[n].x;
+//    label = test_data[n].y;
+//    var prob = [];
+//    for (var k = 0; k < ysize; k++) {
+//        prob.push(softmax_t.prob(k, test_data[n].x))
+//    }
+//    var inference = prob.indexOf(Math.max.apply(null, prob));
+//    console.log("--------------------------------------------------------------------");
+//    //console.log({ "input": softmax_t.node.x });
+//    console.log({ "label": label, "inference": inference, "bool": label === inference });
+//}
+
+
+//console.log(softmax.bias)
+//console.log(softmax_t.bias)

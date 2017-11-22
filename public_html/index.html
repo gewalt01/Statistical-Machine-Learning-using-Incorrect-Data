@@ -29,100 +29,10 @@
     <header>
         <h1 style="text-align: center;">Statistical Machine Learning using Incorrect Data</h1>
         <h2>\begin{align} L\left( \boldsymbol{\theta} \right) = 1 - \frac{P\left(\boldsymbol{y} \mid \boldsymbol{x}\right)} {\mathrm{K} - 1} \end{align}</h2>
-        <h2 style="text-align: center;">(on Discriminative Restricted Boltzmann Machine)</h2>
+        <h2 style="text-align: center;">Demo Page</h2>
     </header>
 
-    <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-3-5">
-            <h3 class="description">
-                <p>Xをポチポチする</p>
-                <p>↓↓↓</p>
-                <p>XがONになってる数をYで判別</p>
-            </h3>
-        </div>
-        <div class="pure-u-1 pure-u-md-2-5">
-            <h3 class="description">
-                <p>Y<sub>0</sub>やY<sub>|X|</sub>になるパターンの割合は少ないから学習されにくい</p>
-            </h3>
-        </div>
-        </div>
-    </div>
-
-    <div class="pure-g demo">
-
-        <div class="pure-u-1 pure-u-md-3-5 ">
-            <div>
-                <div>出力</div>
-                <strong><u>入力された数を判別！！！</u></strong><br>
-                <div class="output-layer" id="output-layer">
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>0</sub></span></label>
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>1</sub></span></label>
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>2</sub></span></label>
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>3</sub></span></label>
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>4</sub></span></label>
-                    <label><input type="radio" class="radio-button" name="output" disabled /><span class="pure-button pure-button-primary">Y<sub>5</sub></span></label>
-                </div>
-                <div class="hidden-layer">
-                    ↑↑↑↑↑↑↑↑↑↑<br>
-                    <div class="pure-button" style="background-color: lightgreen; color: black;">謎の中間層()</div><br>
-                    ↑↑↑↑↑↑↑↑↑↑<br>
-                </div>
-                <div class="input-layer" id="input-layer" onclick="on_change_xnode();">
-                    <label><input type="checkbox" class="" name="input" /><span class="pure-button pure-button-primary">X<sub>0</sub></span></label>
-                    <label><input type="checkbox" class="" name="input" /><span class="pure-button pure-button-primary">X<sub>1</sub></span></label>
-                    <label><input type="checkbox" class="" name="input" /><span class="pure-button pure-button-primary">X<sub>2</sub></span></label>
-                    <label><input type="checkbox" class="" name="input" /><span class="pure-button pure-button-primary">X<sub>3</sub></span></label>
-                    <label><input type="checkbox" class="" name="input" /><span class="pure-button pure-button-primary">X<sub>4</sub></span></label>
-                </div><br>
-                <strong><u>Xを優しくタッチしてオンオフさせるのだ</u></strong>
-                <div>入力</div>
-            </div>
-        </div>
-        <div class="contents pure-u-1 pure-u-md-2-5">
-            <div>
-                <p>Configuration</p>
-                <label><input type="radio" class="radio-button" name="train-mode" value="0" /><span class="pure-button pure-button-primary">正解データで学習</span></label>
-                <label><input type="radio" class="radio-button" name="train-mode" value="1" checked /><span class="pure-button pure-button-primary">不正解データで学習</span></label>
-                <p>XSIZE<br><input type="text" value="3" name="xsize" /><p>
-                <p>HSIZE<br><input type="text" value="10" name="hsize" /><p>
-                <p>Learning Rate(Adam)<br><input type="text" value="0.1" name="alpha" /><p>
-                <p style="display: none">BATCHSIZE<br><input type="text" value="100" name="batch-size" /><p>
-                <p>ITERATION<br><input type="text" value="100" name="iteration" /><p>
-                    <button class="pure-button pure-button-primary" href="#" onclick="train();" id="run">学習せよ！！！</button>
-            </div>
-        </div>
-    </div>
-    <div class="pure-g">
-        <div class="pure-u-1">
-            <hr />
-            <p>機械学習でパターンを覚えさせてる。</p>
-            <hr />
-            <p>やり方</p>
-            <li>正解データのみ使用</li>
-            <li><u>不正解データを使用</u>←←←</li>
-            <br>
-            <p>正解データに当てはまるように学習</p>
-            <p>or</p>
-            <p>不正解データ避けるように学習</p>
-            <hr />
-            <p>学習モデル<br>制限ボルツマンマシン選択モデル<br>(Discriminative Restricted Boltzmann Machine)<br>超マニアックなモデル。<br>たぶん知ってる人ほとんどいない。</p>
-            <hr />
-        </div>
-
-        <div class="pure-u-1 data-table">
-            <div>学習に使ったデータ</div>
-            <table class="pure-table pure-table-horizontal pure-table-striped" id="data-table" style="margin-left: auto; margin-right: auto;">
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-
-        </div>
-
-    </div>
-
-<script src="js/main.js"></script>
+    <p><a href="drbm.html">Discriminative RBM</p>
+    <p><a href="softmax.html"><s>Softmax Classification</s.</p>
 </body>
 </html>
