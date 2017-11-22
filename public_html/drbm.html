@@ -121,8 +121,53 @@
 
     <div class="pure-g">
         <div class="pure-u-1">
-            <p>余談<br>Xが全部Off, 全部Onになるパターンはそれぞれたったの1パターンしかないため, Xノードの数が増えれば増えるほど他のパターンに埋もれでごくごくごくごくマイナーなデータになってしまいます。そのため適当に機械学習をした際にそのマイナーなパターンはほとんど学習されなくなってしまう可能性があります。<br>(それをうまく回避してごくわずかにしか存在しないデータ(スパースなデータ)の特徴を見つけるような方法をスパースモデリングなどと呼んでいます。<br>※このプログラムはスパースしてません。)</p>
-            <hr />
+        <p>余談</p>
+        <p>なぜ少ないパターンが学習されないのか</p>
+        <p>たとえば次のように入力Xが5つあるパターンを考えてみましょう。</p>
+        <img class="pure-img pure-u" src="img/drbm_graph.png" alt="graph">
+        <p>このパターンの時, 入力に対して出力がY<sub>K</sub>となるパターンは次の表と図のようになります。</p>
+        <br>
+        <div class="pure-u-1">
+            <div>出力クラスとその入力パターンの総数</div>
+            <table class="pure-table pure-table-horizontal pure-table-striped" id="data-table" style="margin-left: auto; margin-right: auto;">
+                <thead>
+                <tr>
+                    <th>出力クラス</th>
+                    <th>入力パターン数</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Y<sub>0</sub></th>
+                    <th><sub>5</sub>C<sub>0</sub>=1通り</th>
+                </tr>
+                <tr>
+                    <th>Y<sub>1</sub></th>
+                    <th><sub>5</sub>C<sub>1</sub>=5通り</th>
+                </tr>
+                <tr>
+                    <th>Y<sub>2</sub></th>
+                    <th><sub>5</sub>C<sub>2</sub>=10通り</th>
+                </tr>
+                <tr>
+                    <th>Y<sub>3</sub></th>
+                    <th><sub>5</sub>C<sub>3</sub>10通り</th>
+                </tr>
+                <tr>
+                    <th>Y<sub>4</sub></th>
+                    <th><sub>5</sub>C<sub>4</sub>=5通り</th>
+                </tr>
+                <tr>
+                    <th>Y<sub>5</sub></th>
+                    <th><sub>5</sub>C<sub>5</sub>=1通り</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <img class="pure-img pure-u" src="img/histgram_drbm.png" alt="histgram_drbm">
+        <br>
+        <p>Y<sub>0</sub>とY<sub>5</sub>のパターン数が少なくなっています。つまり他のデータに埋もれてしまうためです。</p>
         </div>
 
     </div>
